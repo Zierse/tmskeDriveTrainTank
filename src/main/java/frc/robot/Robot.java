@@ -20,8 +20,8 @@ import edu.wpi.first.wpilibj.TimedRobot;
  * this project, you must also update the Main.java file in the project.
  */
 public class Robot extends TimedRobot {
-  
-  SparkMax motorSuperiorDireitoLider;
+  //Definição de Variaveis
+  SparkMax motorSuperiorDireitoLider; 
   SparkMax motorInferiorDireitoSeg;
   SparkMax motorSuperiorEsquerdoLider;
   SparkMax motorInferiorEsquerdoSeg;
@@ -29,16 +29,17 @@ public class Robot extends TimedRobot {
 
   public Robot() {
     
-    motorSuperiorEsquerdoLider = new SparkMax(2, MotorType.kBrushless);
-    motorInferiorEsquerdoSeg = new SparkMax(3, MotorType.kBrushless);
-    motorSuperiorDireitoLider = new SparkMax(4, MotorType.kBrushless);
-    motorInferiorDireitoSeg = new SparkMax(5, MotorType.kBrushless);
+    motorSuperiorEsquerdoLider = new SparkMax(2, MotorType.kBrushless); //Estanciando variaveis com os parametros do motores.
+    motorInferiorEsquerdoSeg = new SparkMax(3, MotorType.kBrushless); //Estanciando variaveis com os parametros do motores.
+    motorSuperiorDireitoLider = new SparkMax(4, MotorType.kBrushless); //Estanciando variaveis com os parametros do motores.
+    motorInferiorDireitoSeg = new SparkMax(5, MotorType.kBrushless); //Estanciando variaveis com os parametros do motores.
 
-    SparkMaxConfig configGlobal = new SparkMaxConfig();
+    SparkMaxConfig configGlobal = new SparkMaxConfig(); //Estaciando as configurações para motores
     SparkMaxConfig configMotorDireitoLider = new SparkMaxConfig();
     SparkMaxConfig configMotorEsquerdoSeg = new SparkMaxConfig();
     SparkMaxConfig configMotorDireitoSeg = new SparkMaxConfig();
 
+    //Definindo Configurações
     configGlobal
         .smartCurrentLimit(30)
         .idleMode(IdleMode.kBrake);
@@ -55,13 +56,14 @@ public class Robot extends TimedRobot {
     configMotorDireitoSeg
         .apply(configGlobal)
         .follow(motorSuperiorDireitoLider);
-    
+
+    //Parametrizzando as configurações
         motorSuperiorEsquerdoLider.configure(configGlobal, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
         motorInferiorEsquerdoSeg.configure(configMotorEsquerdoSeg, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
         motorSuperiorDireitoLider.configure(configMotorDireitoLider, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
         motorInferiorDireitoSeg.configure(configMotorDireitoSeg, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 
-        logitech = new Joystick(0);
+        logitech = new Joystick(0); //Estaciando o Joystick
   }
 
   @Override
